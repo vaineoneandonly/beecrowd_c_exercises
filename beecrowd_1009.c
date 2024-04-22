@@ -15,7 +15,23 @@ Print the seller's total salary, according to the given example.
 
 int main ()
 {
+    int c, i, word_len = 0;
+    char name[20];
 
+    while ((c = getchar()) != ':')
+    {
+        if (c != '\b' && c != '\r' && c != '\n')
+        {
+            name[word_len] = c;
+            ++word_len;
+        }
 
-    
+    }
+
+    for (i = 0; i <= 20; ++i)
+        printf ("%c\n", name[i]);
+    //for (i = 0; i <= (int)name; ++i)
+    //    printf ("%d", name[i]);
+
 }
+    
