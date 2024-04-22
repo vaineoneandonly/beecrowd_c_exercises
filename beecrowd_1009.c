@@ -15,6 +15,8 @@ Print the seller's total salary, according to the given example.
 
 int main ()
 {
+
+    //just messing with character arrays in this first part here. Actually found a way to get it to work so I'm keeping the code around for reference
     int c, i, word_len = 0;
     char name[20];
 
@@ -25,13 +27,18 @@ int main ()
             name[word_len] = c;
             ++word_len;
         }
-
     }
 
-    for (i = 0; i <= 20; ++i)
-        printf ("%c\n", name[i]);
-    //for (i = 0; i <= (int)name; ++i)
-    //    printf ("%d", name[i]);
+    for (i = 0; i < word_len; ++i)
+        printf ("%c-%d\n", name[i], name[i]);
+
+    //actual execution of question
+    double salary, sold, total = 0;
+
+    scanf ("%lf %lf", &salary, &sold);
+    total = salary + (sold * 0.15);
+
+    printf ("TOTAL = R$ %.2lf\n", total);
 
 }
     
