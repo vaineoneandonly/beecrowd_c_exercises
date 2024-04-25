@@ -14,24 +14,26 @@ int main()
 
     while ((number % values[i]) != 0)
     {
-        printf ("%d\n", number %values[i]);
-        
         factor = number / values[i];
         rounded = factor * values[i];
 
-        for (j = 0; j < factor; ++j)
-            printf ("%s", romans[i]);
-
+        printf ("%d %d %d %d\n", number, factor, rounded, values[i]);
 
         number %= values[i];
         --i;
+
+        for (j = 0; j < factor; ++j)
+            printf ("%s", romans[i+1]);
+
     
-    }
+    }  
 
     factor = number / values[i];
 
     for (j = 0; j < factor; ++j)
         printf ("%s", romans[i]);
+
+    putchar ('\n');
 
 }
 
