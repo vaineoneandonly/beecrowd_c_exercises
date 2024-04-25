@@ -17,7 +17,7 @@
 //    // goes up to 4999. There's another one for 5000 and beyond which is V with this thing on top _ like   V
 //
 //    char *roman[7] = {"I", "V", "X", "L", "C", "D", "M"};
-//    int value_quantity [7][2] = {{1, 0}, {5, 0}, {10, 0}, {50, 0}, {100, 0}, {500, 0}, {1000, 0}};
+//    int value_quantity [7][2] = {{1, 1}, {5, 0}, {10, 1}, {50, 0}, {100, 1}, {500, 0}, {1000, 1}};
 //    int number, i = 0;
 //
 //    scanf ("%d", &number);
@@ -36,29 +36,47 @@ int main()
 {
 
     char *roman[3] = {"I", "V", "X"};
-    int value_and_quantity[3][2] = {{1, 0}, {5, 0}, {10, 0}};
-    int number, i, mcd = 0;
+    int value_and_flag[3][2] = {{1, 1}, {5, 0}, {10, 1}};
+    int number, i, j, diff = 0;
 
     scanf ("%d", &number);
 
     for (i = 2; i >= 0; --i)
     {
-        if (number >= (value_and_quantity[i][0] - 1))
+        if (number >= (value_and_flag[i][0] - 1))
         {
-            printf ("%d é próximo de %d, então vamos pegar o %d\n", number, value_and_quantity[i][0], value_and_quantity[i][0]);
+            diff = number - (value_and_flag[i][0]);
             break;
-        }
-        else
-        {
-            printf ("procurando\n");
         }
 
     }
+    
+    if (diff != 0)
+    {
+        if (diff > 0)
+        {
+            printf ("%s", roman[i]);
+            for (j = 0; j < diff; ++j)
+                printf ("%s", roman[0]);
+        }
+        else
+        {   
+            printf ("%s", roman[0]);
+            printf ("%s", roman[i]);
+        }
 
+    }
+    else
+        printf ("%s", roman[i]);  
 
-    /* pega o número. Número é maior ou igual que o valor do numeral romano mais alto?
+    printf ("\n");  
 
+    /* pega o número. Número é maior ou igual que o valor do numeral romano mais alto - valor com bandeira anterior?
+                      ENtão vamos pegar esse valor pra subtrair  do próprio valor, e ver a quantidade de "valor com bandeira anterior" que vai nessa parte.
+                      Se esse valor for positivo, vamos acrescentar X vezes o "valor com bandeira anterior" depois do número;
+                      Se não, colocamos só 1 vez o "valor com bandeira anterior" antes.
     */
-
+    // kinda works, but only works from values from "closest value - previous flagged value" to " closest value + 3*previous flagged value". 
+    // need to figure out a way to split the values
 
 }
